@@ -1,0 +1,104 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { FaQuestion, FaWallet, FaComment, FaBell, FaPlus, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa6";
+import { AuthProvider } from './context/AuthContext';
+
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "HitMeUp",
+  description: "HitMeUp - Your go-to platform for connecting to quick tasks from taskers and clients",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" sizes="16x16" type="image/x-icon" />
+       <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+       <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
+       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" />
+        <title>HitMeUp</title>
+        <meta name="description" content="HitMeUp - Your go-to platform for connecting with friends and family." />
+        <meta name="keywords" content="HitMeUp, social media, connect, friends, family" />
+        <meta name="author" content="HitMeUp Team" />
+        <meta property="og:title" content="HitMeUp" />
+        <meta property="og:description" content="HitMeUp - Your go-to platform for connecting with friends and family." />
+        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:url" content="https://hitmeup.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="HitMeUp" />
+        <meta name="twitter:description" content="HitMeUp - Your go-to platform for connecting with friends and family." />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto`}>
+      <AuthProvider>
+        <main>{children}</main>
+        <footer className="container py-8 text-gray-500 flex justify-between items-center">
+          <div className="flex space-x-6">
+            {/* Add accessible labels to the links */}
+            <a
+              href="https://x.com/hitmeuphq?s=21"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl text-blue-600"
+              aria-label="Visit our Twitter page"
+              title="Twitter"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="https://www.facebook.com/share/12DNZGwsPEt/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl text-blue-800"
+              aria-label="Visit our Facebook page"
+              title="Facebook"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://www.instagram.com/hitmeuphq/profilecard/?igsh=eDcwcm41MWl6NTdq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl text-pink-500"
+              aria-label="Visit our Instagram page"
+              title="Instagram"
+            >
+              <FaInstagram />
+            </a>
+          </div>
+
+          <div className="flex-grow text-center">
+            hitmeup &copy; 2024 - All rights reserved
+          </div>
+
+          <button className="bg-red-500 text-white px-3 py-2 rounded-full flex items-center text-bold">
+            <span className="bg-white p-1 rounded-full flex items-center justify-center mx-2 text-bold">
+              <FaQuestion className="text-red-500" />
+            </span>
+            Help
+          </button>
+        </footer>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}

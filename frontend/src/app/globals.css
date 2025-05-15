@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'AldransAltW00-Medium';
+  src: url('/fonts/AldransAltW00-Medium.woff2') format('ttf'),
+       url('/fonts/AldransAltW00-Medium.woff') format('woff'),
+       url('/fonts/AldransAltW00-Medium.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.text-logo {
+  font-family: 'AldransAltW00-Medium', sans-serif;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4f46e5; /* Purple color */
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+/* Base styles for all devices */
+body {
+  margin: 0;
+  background-color: #f9f9f9;
+  color: #2f29a5;
+}
+
+/* Mobile styles for small screens (e.g., phones) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task-card {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+/* Tablet styles for medium screens (e.g., tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .task-card {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+/* Desktop styles for larger screens */
+@media (min-width: 769px) {
+  body {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .task-card {
+    padding: 20px;
+    font-size: 16px;
+  }
+}
